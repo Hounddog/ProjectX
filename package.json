@@ -1,0 +1,52 @@
+{
+  "name": "ProjectX",
+  "version": "0.0.1-7",
+  "author": {
+    "name": "Martin Shwalbe",
+    "email": "martin.shwalbe@gmail.com"
+  },
+  "description": "WebGL playground",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Hounddog/ProjectX.git"
+  },
+  "keywords": [
+    "nodeapps",
+    "helloworld"
+  ],
+  "homepage": "https://github.com/Hounddog/ProjectX",
+  "scripts": {
+    "start": "node ./server"
+  },
+  "contributors": [
+    {
+      "name": "Sebastian",
+      "email": ""
+    }
+  ],
+  "dependencies": {
+    "socket.io": "=0.9.x"
+  },
+  "devDependencies": {
+    "connect": "=2.1.x"
+  },
+  "engines": {
+    "node": ">=0.6.x"
+  },
+  "bugs": {
+    "url": "https://github.com/Hounddog/ProjectX/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nodeapps/helloworld/raw/master/LICENSE"
+    }
+  ],
+  "analyze": false,
+  "optionalDependencies": {},
+  "dist": {
+    "shasum": "1893bdee6b033ef8a226e01940d56ac77708040f"
+  },
+  "subdomain": "ProjectX.Hounddog"
+}
