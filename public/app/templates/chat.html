@@ -1,0 +1,13 @@
+<div style="border:1px solid black;width:50em;position:absolute;height:15em;bottom:0" data-dojo-attach-point="chat">
+    <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="style: {height: '10em', width: '50em'}" data-dojo-attach-point="tabCont">
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'global'" data-dojo-attach-point="global">
+            pane 1
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'private'" data-dojo-attach-point="tab2">
+            pane 2
+        </div>
+    </div>
+    <form data-dojo-type="dijit.form.Form" data-dojo-attach-point="inputForm">
+        <input data-dojo-type="dijit.form.TextBox" data-dojo-attach-point="input" /><input type="submit" value="Send"/>
+    </form>
+</div>

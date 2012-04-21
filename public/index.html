@@ -1,54 +1,15 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('http://localhost');
-            
-            function esc(msg){
-                return msg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            };
-      
-            function message(obj){
-                console.log(obj);
-                var el = document.createElement('p');
-                if (obj.announcement) {
-                    el.innerHTML = '<em>' + esc(obj.announcement) + '</em>';
-                } else if (obj.message) {
-                    el.innerHTML = '<b>' + esc(obj.message[0]) + ':</b> ' + esc(obj.message[1]);
-                } 
-                document.getElementById('chat').appendChild(el);
-                document.getElementById('chat').scrollTop = 1000000;
-            }
-            function send() {
-                var val = document.getElementById('text').value;
-                socket.emit('message',  val );
-                message({ message: ['you', val] });
-                document.getElementById('text').value = '';
-            }
-            
-            function sendChatName(name) {
-                socket.emit('chatName',  name );
-            }
-            
-            socket.on('message', function(obj){
-                message(obj);
-            });
-            var name = prompt("Enter your name : ", "your name here");
-            sendChatName(name);
-        </script>
-        <style>
-            #chat {
-                border: 1px solid black;
-                height:300px;
-                width:300px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="chat">
-        </div>
-        <form id="form" onsubmit="send(); return false">
-            <input type="text" id="text" /><input type="submit" value="Send"/>
-        </form>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>ProjectX Welcome to the Future!</title>
+    <link rel="stylesheet" href="app/resources/app.css">
+    <script data-dojo-config="async: 1, tlmSiblingOfDojo: 1"
+            src="js/dojo/dojo/dojo.js" defer></script>
+    <script src="app/run.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body class="claro">
+    
+</body>
 </html>

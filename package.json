@@ -1,6 +1,6 @@
 {
   "name": "ProjectX",
-  "version": "0.0.1-10",
+  "version": "0.0.1-14",
   "author": {
     "name": "Martin Shwalbe",
     "email": "martin.shwalbe@gmail.com"
@@ -32,7 +32,7 @@
     "connect": "=2.1.2"
   },
   "engines": {
-    "node": ">=0.6.x"
+    "node": ">=0.6.15"
   },
   "bugs": {
     "url": "https://github.com/Hounddog/ProjectX/issues"

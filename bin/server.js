@@ -3,7 +3,10 @@ var app = connect()
   .use(connect.logger('dev'))
   .use(connect.static('public'))
   .use(function(req, res){
-    res.end('page not found\n');
+	var body = '404 page not found';
+        res.statusCode = 404;
+        res.setHeader('Content-Length', body.length);
+        res.end(body);
   })
  .listen(8080);
  
@@ -12,7 +15,6 @@ var app = connect()
 io.sockets.on('connection', function (socket) {
     socket.chatName = null;
   socket.on('message', function (message) {
-      // var msg = { socket.id , message };
       var nick = socket.id;
       if(socket.chatName) {
           nick = socket.chatName;
