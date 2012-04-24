@@ -1,0 +1,6 @@
+src/
+nbproject/
+node_modules/
+bin/development.js
+build.sh
+vendor/dojo

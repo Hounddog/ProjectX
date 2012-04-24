@@ -1,6 +1,6 @@
 {
   "name": "ProjectX",
-  "version": "0.0.1-14",
+  "version": "0.0.1-17",
   "author": {
     "name": "Martin Shwalbe",
     "email": "martin.shwalbe@gmail.com"
@@ -29,7 +29,8 @@
     "socket.io": "=0.9.5"
   },
   "devDependencies": {
-    "connect": "=2.1.2"
+    "connect": "=2.1.2",
+    "connect-gzip": "=0.1.6"
   },
   "engines": {
     "node": ">=0.6.15"

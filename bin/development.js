@@ -1,9 +1,7 @@
 var connect = require('connect');
-var gzip = require('connect-gzip');
 var app = connect()
   .use(connect.logger('dev'))
-  //.use(connect.static('public'))
-  .use(gzip.staticGzip('public'))
+  .use(connect.static('src'))
   .use(function(req, res){
 	var body = '404 page not found';
         res.statusCode = 404;

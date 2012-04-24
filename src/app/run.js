@@ -22,8 +22,8 @@ require({
         // instead, and it will configure it using that string for both the "name" and "location" properties. Handy!
         { name: 'dojo', location: 'js/dojo/dojo'},
         { name: 'dijit', location: 'js/dojo/dijit'},
-        { name: 'dojox', location: 'js/dojo/dojox'},
-        'app',
+       // { name: 'dojox', location: 'js/dojo/dojox'},
+        'app'
     ],
 
     // This is a hack. In order to allow app/main and app/run to be built together into a single file, a cache key needs

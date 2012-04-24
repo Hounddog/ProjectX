@@ -64,8 +64,8 @@ var profile = {
             // the main application (app/main) and the dojo/i18n and dojo/domReady modules because they are one of the
             // conditional dependencies in app/main (the other being app/Dialog) but we don’t want to have to make
             // extra HTTP requests for such tiny files.
-            include: [ 'dojo/dojo', 'dojo/i18n', 'dojo/domReady', 'app/main', 'app/run' ],
-
+            //include: [ 'dojo/dojo', 'dojo/i18n', 'dojo/domReady', 'app/main', 'app/run' ],
+	    include : ['dojo/dojo', 'dojo/i18n', 'dojo/domReady', 'app/main', 'app/run'],
             // By default, the build system will try to include dojo/main in the built dojo/dojo layer, which adds a
             // bunch of stuff we don’t want or need. We want the initial script load to be as small and quick as
             // possible, so we configure it as a custom, bootable base.
@@ -76,7 +76,7 @@ var profile = {
         // In the demo application, we conditionally require app/Dialog on the client-side, so we’re building a
         // separate layer containing just that client-side code. (Practically speaking, you’d probably just want
         // to roll everything into a single layer, but I wanted to make sure to illustrate multi-layer builds.)
-        'app/Dialog': { include: [ 'app/Dialog' ] }
+        'app/Chat': { include: [ 'app/Chat' ] }
     },
 
     // Providing hints to the build system allows code to be conditionally removed on a more granular level than
