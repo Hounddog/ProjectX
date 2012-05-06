@@ -1,17 +1,19 @@
 define([ 
     'dojo/_base/declare', 
     'dijit/_Widget',
-    'dojo/_base/array'
-    ], function (declare, _Widget, array) {
+    'dojo/_base/array',
+    'dojo/_base/connect'
+    ], function (declare, _Widget, array, connect) {
         return declare("app.Engine", [_Widget], {
             stats:null, 
             scene:null,
             renderer: null,
             camera:null,
-            cameraControl:null,
+            //cameraControl:null,
             objectModels: [],
             screenInterfaces: [],
             clock: null,
+            character: false,
             
             createRenderer: function() {
                 if( Detector.webgl ){
@@ -76,50 +78,29 @@ define([
                 array.forEach(this.screenInterfaces, function(model){
                     model.update(delta);
                 });
-                // update camera controls
-                this.cameraControls.update();
+                if(this.character) {
+                    //this.character.update();
+                    
+                    // update camera controls
+                    this.cameraControls.update();
 
-                // actually render the scene
-                this.renderer.render( this.scene, this.camera );
+                    // actually render the scene
+                    this.renderer.render( this.scene, this.camera );
+                
+                }
             },
             
             init: function() {
                 // create a scene
                 this.scene = new THREE.Scene();
-
-                // put a camera in the scene
-                this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000 );
-                this.camera.position.set(0, 0, 50);
-                this.scene.add(this.camera);
-
-                // create a camera contol
-                this.cameraControls = new THREE.TrackballControls( this.camera, this.renderer.domElement );
-
-                this.cameraControls.rotateSpeed = 1.0;
-                this.cameraControls.zoomSpeed = 1.2;
-                this.cameraControls.panSpeed = 0.2;
-
-                this.cameraControls.noZoom = false;
-                this.cameraControls.noPan = false;
-
-                this.cameraControls.staticMoving = false;
-                this.cameraControls.dynamicDampingFactor = 0.3;
-
-                this.cameraControls.minDistance = 1 * 1.1;
-                this.cameraControls.maxDistance = 1 * 100;
-
-                this.cameraControls.keys = [ 65, 83, 68 ];
-                
-                // this.cameraControls	= new THREEx.DragPanControls(this.camera)
-
                 // transparently support window resize
                 THREEx.WindowResize.bind(this.renderer, this.camera);
-                // allow 'p' to make screenshot
-                //THREEx.Screenshot.bindKey(this.renderer);
-                // allow 'f' to go fullscreen where this feature is supported
-                //if( THREEx.FullScreen.available() ){
-                //    THREEx.FullScreen.bindKey();
-                //}
+            // allow 'p' to make screenshot
+            //THREEx.Screenshot.bindKey(this.renderer);
+            // allow 'f' to go fullscreen where this feature is supported
+            //if( THREEx.FullScreen.available() ){
+            //    THREEx.FullScreen.bindKey();
+            //}
             },
             
             postCreate: function() {
@@ -128,14 +109,16 @@ define([
                 this.addStats();
                 this.init();
                 this.animate();
-                this.loadGameObjects();
+                
+                
+                this.loadCharacter();
             },
             
             loadGameObjects: function() {
                 //current function to load game objects until server is ready
                 this.loadObject('app/models/planets/Sun');
-               // this.loadObject('app/models/planets/Mercury');
-               // this.loadObject('app/models/planets/Venus');
+                // this.loadObject('app/models/planets/Mercury');
+                // this.loadObject('app/models/planets/Venus');
                 this.loadObject('app/models/planets/Mars');
                 //this.loadObject('app/models/planets/Earth');
                 
@@ -145,7 +128,9 @@ define([
             
             loadObject: function(model) {
                 require([model], dojo.hitch(this, function(ObjectModel){
-                    var object = new ObjectModel({'engine': this});
+                    var object = new ObjectModel({
+                        'engine': this
+                    });
                     this.scene.add( object.root );
                     this.objectModels.push(object);
                 }));   
@@ -153,8 +138,28 @@ define([
             
             loadInterface: function(interFaceScreen) {
                 require([interFaceScreen], dojo.hitch(this, function(ObjectInterface){
-                    var screen = new ObjectInterface({'engine': this});
+                    var screen = new ObjectInterface({
+                        'engine': this
+                    });
                     this.screenInterfaces.push(screen);
+                }));
+            },
+            
+            loadCharacter: function() {
+                require(['app/models/spaceShips/f302', 'dojo/_base/connect'], dojo.hitch(this, function(Character, connect){
+                    var character = new Character({
+                        'engine': this, 
+                        gameControls:true
+                    });
+                    connect.connect(character, "onComplete", dojo.hitch(this, function() {
+                        this.camera = character.camera;
+                        this.cameraControls = character.cameraControls;
+                        this.scene.add(this.camera);
+                        this.scene.add( character.root );
+                        this.objectModels.push(character);
+                        this.loadGameObjects();
+                        this.character = character;
+                    }));
                 }));
             }
         });
