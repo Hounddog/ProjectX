@@ -6,6 +6,7 @@
  * It is highly, highly recommended that you develop your CSS using LESS: http://lesscss.org.
  */
 
-@import '../../js/dojo/dojo/resources/dojo.css';
-@import '../../js/dojo/dijit/themes/claro/claro.css';
-@import "../../js/dojo/dijit/themes/claro/document.css";
+@import '../../vendor/dojo/dojo/resources/dojo.css';
+@import '../../vendor/dojo/dijit/themes/claro/claro.css';
+@import '../../vendor/dojo/dijit/themes/claro/document.css';
+@import 'main.css';

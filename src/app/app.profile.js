@@ -76,7 +76,8 @@ var profile = {
         // In the demo application, we conditionally require app/Dialog on the client-side, so we’re building a
         // separate layer containing just that client-side code. (Practically speaking, you’d probably just want
         // to roll everything into a single layer, but I wanted to make sure to illustrate multi-layer builds.)
-        'app/Chat': { include: [ 'app/Chat' ] }
+        'app/Chat': { include: [ 'app/Chat' ] },
+        'app/Engine': { include: [ 'app/Engine' ]}
     },
 
     // Providing hints to the build system allows code to be conditionally removed on a more granular level than

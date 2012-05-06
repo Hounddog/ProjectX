@@ -20,8 +20,8 @@ require({
     packages: [
         // If you are registering a package that has an identical name and location, you can just pass a string
         // instead, and it will configure it using that string for both the "name" and "location" properties. Handy!
-        { name: 'dojo', location: 'js/dojo/dojo'},
-        { name: 'dijit', location: 'js/dojo/dijit'},
+        { name: 'dojo', location: 'vendor/dojo/dojo'},
+        { name: 'dijit', location: 'vendor/dojo/dijit'},
        // { name: 'dojox', location: 'js/dojo/dojox'},
         'app'
     ],

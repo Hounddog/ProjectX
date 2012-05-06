@@ -10,3 +10,6 @@
 [submodule "vendor/dojo/util"]
 	path = vendor/dojo/util
 	url = https://github.com/dojo/util.git
+[submodule "vendor/threejs/lib/stats"]
+	path = vendor/threejs/lib/stats
+	url = git://github.com/mrdoob/stats.js.git

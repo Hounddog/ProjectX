@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>ProjectX Welcome to the Future!</title>
-    <link rel="stylesheet" href="app/resources/app.css">
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script data-dojo-config="async: 1, tlmSiblingOfDojo: 1, isDebug: 1"
-            src="js/dojo/dojo/dojo.js" defer></script>
-    <script src="app/run.js" defer></script>
-</head>
-<body class="claro">
-    
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>ProjectX Welcome to the Future!</title>
+        <link rel="stylesheet" href="app/resources/app.css">
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script data-dojo-config="async: 1, tlmSiblingOfDojo: 1, isDebug: 1"
+        src="vendor/dojo/dojo/dojo.js" defer></script>
+        <script src="app/run.js" defer></script>
+
+        <script src="vendor/three.js/Three.js"></script>
+        <script src="vendor/three.js/Detector.js"></script>
+        <!-- https://github.com/mrdoob/stats.js -->
+        <script src="vendor/three.js/Stats.js"></script>
+
+        <script src="vendor/threex/THREEx.screenshot.js"></script>
+        <script src="vendor/threex/THREEx.FullScreen.js"></script>
+        <script src="vendor/threex/THREEx.WindowResize.js"></script>
+        <script src="vendor/threex.dragpancontrols.js"></script>
+
+        <script src="vendor/ShaderExtras.js"></script>
+        <script src="vendor/postprocessing/EffectComposer.js"></script>
+        <script src="vendor/postprocessing/ShaderPass.js"></script>
+        <script src="vendor/postprocessing/MaskPass.js"></script>
+        <script src="vendor/postprocessing/RenderPass.js"></script>
+        <script src="vendor/postprocessing/BloomPass.js"></script>
+        <script src="vendor/postprocessing/FilmPass.js"></script>
+    </head>
+    <body class="claro">
+        <!-- three.js container -->
+        <div id="container"></div>
+    </body>
 </html>

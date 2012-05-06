@@ -9,7 +9,7 @@ BASEDIR=$(cd $(dirname $0) && pwd)
 SRCDIR="$BASEDIR/src"
 
 # Directory containing dojo build utilities
-TOOLSDIR="$SRCDIR/js/dojo/util/buildscripts"
+TOOLSDIR="$SRCDIR/vendor/dojo/util/buildscripts"
 
 # Destination directory for built code
 DISTDIR="$BASEDIR/public"
@@ -62,12 +62,18 @@ perl -pe "
   s/\s+/ /g;                                 # Collapse white-space" > "$DISTDIR/index.html"
 
 #Move dojo folders to correct location
-mkdir public/js
-mkdir public/js/dojo
-mkdir public/js/dojo/dojo
-cp public/dojo/dojo.js public/js/dojo/dojo
-cp public/dojo/dojo.js.uncompressed.js public/js/dojo/dojo
+mkdir public/vendor
+mkdir public/vendor/dojo
+mkdir public/vendor/dojo/dojo
+cp public/dojo/dojo.js public/vendor/dojo/dojo
+cp public/dojo/dojo.js.uncompressed.js public/vendor/dojo/dojo
 rm -rf public/dojo
 rm -rf public/dijit
+
+cp -r src/vendor/postprocessing/ public/vendor/
+cp -r src/vendor/ShaderExtras.js public/vendor/
+cp -r vendor/threex.dragpancontrols.js public/vendor/
+cp -r vendor/three.js/ public/vendor/
+cp -r vendor/threex public/vendor/
 
 echo "Build complete"
