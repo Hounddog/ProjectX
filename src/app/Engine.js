@@ -115,11 +115,11 @@ define([
                 // transparently support window resize
                 THREEx.WindowResize.bind(this.renderer, this.camera);
                 // allow 'p' to make screenshot
-                THREEx.Screenshot.bindKey(this.renderer);
+                //THREEx.Screenshot.bindKey(this.renderer);
                 // allow 'f' to go fullscreen where this feature is supported
-                if( THREEx.FullScreen.available() ){
-                    THREEx.FullScreen.bindKey();
-                }
+                //if( THREEx.FullScreen.available() ){
+                //    THREEx.FullScreen.bindKey();
+                //}
             },
             
             postCreate: function() {
