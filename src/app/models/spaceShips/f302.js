@@ -10,7 +10,7 @@ define([
             },
             gameControls: false,
             
-            shipModel: "app/models/spaceShips/resources/f302.js"
+            shipModel: "models/spaceShips/f302.js"
             
             
         });

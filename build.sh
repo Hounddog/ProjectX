@@ -75,5 +75,7 @@ cp -r src/vendor/ShaderExtras.js public/vendor/
 cp -r vendor/threex.dragpancontrols.js public/vendor/
 cp -r vendor/three.js/ public/vendor/
 cp -r vendor/threex public/vendor/
+cp -r src/models public/
+cp -r src/demos public/
 
 echo "Build complete"

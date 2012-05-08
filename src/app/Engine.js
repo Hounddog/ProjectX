@@ -9,7 +9,7 @@ define([
             scene:null,
             renderer: null,
             camera:null,
-            //cameraControl:null,
+            cameraControls:null,
             objectModels: [],
             screenInterfaces: [],
             clock: null,
@@ -154,7 +154,6 @@ define([
                     connect.connect(character, "onComplete", dojo.hitch(this, function() {
                         this.camera = character.camera;
                         this.cameraControls = character.cameraControls;
-                        this.scene.add(this.camera);
                         this.scene.add( character.root );
                         this.objectModels.push(character);
                         this.loadGameObjects();

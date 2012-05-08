@@ -128,8 +128,9 @@ define([
         },
             
         init: function() {
-            var light = new THREE.SpotLight( 0xFFFFFF,1 ,0, true );
+            var light = new THREE.SpotLight( 0xFFFFFF,1000 ,0, true );
             this.root.add(light);
+            
             var renderModel = new THREE.RenderPass( this.engine.scene, this.engine.camera );
             var effectBloom = new THREE.BloomPass( 1.25 );
             var effectFilm = new THREE.FilmPass( 0.35, 0.95, 2048, false );

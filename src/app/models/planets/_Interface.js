@@ -27,6 +27,8 @@ define([
                 this.init();
             },
             
+            init: function(){},
+            
             update: function(clock) {
                 //clock is the game clock set by the engine
                 this.updateAngle(clock);

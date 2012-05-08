@@ -17,12 +17,6 @@ define([
             camera: null,
             keyboard: null,
             
-            material: function() {
-                //override this function to return appropriate material
-                var material	= new THREE.MeshNormalMaterial();
-                return material;
-            },
-            
             postCreate: function() {
                 if(this.gameControls) {
                     this.addGameControls();
@@ -32,11 +26,10 @@ define([
             },
         
             loadShip: function(ship) {
-                ship.applyMatrix( new THREE.Matrix4());
-                var material = new THREE.MeshNormalMaterial();
-                this.root = new THREE.Mesh( ship, material );
-                this.root.scale.set(0.1, 0.1, 0.1);
+                //ship.applyMatrix( new THREE.Matrix4());
+                this.root = new THREE.Mesh( ship, new THREE.MeshNormalMaterial() );
                 this.root.position = this.position;
+                this.root.add(this.camera);
                 this.onComplete();
             },
             onComplete: function() {},
@@ -47,26 +40,14 @@ define([
                 //if(mars = registry.byId('Mars')) {
                 //    this.root.lookAt( mars.root.position );
                 //}
-                //console.log('update ship');
                 if(this.gameControls) {
-                    console.log(this.root.position);
-                    this.camera.lookAt( 
-                        this.root.position 
-                        );
-                    this.cameraControls.target.set( this.root.position.x, this.root.position.y, this.root.position.z );
-                    //this.cameraControls.target = this.position;
-
-                    //this.camera.lookAt(this.root.position);
                     this.shipControls(delta);
                 }
             },
             
             addGameControls: function() {
-                // put a camera in the scene
-                this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000 );
+                this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 1000 );
                 this.camera.position.set(0, 0, 50);
-                
-
                 // create a camera contol
                 this.cameraControls = new THREE.TrackballControls( this.camera, this.engine.renderer.domElement );
                 
@@ -75,7 +56,7 @@ define([
                 this.cameraControls.panSpeed = 0.2;
 
                 this.cameraControls.noZoom = false;
-                this.cameraControls.noPan = false;
+                this.cameraControls.noPan = true;
 
                 this.cameraControls.staticMoving = false;
                 this.cameraControls.dynamicDampingFactor = 0.3;
@@ -83,13 +64,8 @@ define([
                 this.cameraControls.minDistance = 1 * 1.1;
                 this.cameraControls.maxDistance = 1 * 100;
 
-                this.cameraControls.keys = [ 65, 83, 68 ];
+                this.cameraControls.keys = [ 100 /*4*/, 104 /*8*/, 102 /*6*/ ];
                 this.keyboard = new THREEx.KeyboardState();
-            },
-            addCamera: function() {
-                this.camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000 );
-                this.camera.position.set(0, 0, 50);
-                this.engine.scene.add(this.camera);
             },
             shipControls: function(delta) {
                 if( this.keyboard.pressed("a")) {
