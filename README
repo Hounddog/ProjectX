@@ -2,4 +2,11 @@ Running this locally
 $ git clone https://github.com/Hounddog/ProjectX.git
 $ cd ProjectX
 $ npm install -d
-$ node ./bin/server.js 
+$ node ./bin/server.js
+
+HomePage: http://projectx.hounddog.nodejitsu.com/
+
+
+Demos:
+
+f302: http://projectx.hounddog.nodejitsu.com/demos/ships/f302.html 
